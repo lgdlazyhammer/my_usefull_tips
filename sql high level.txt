@@ -1,0 +1,35 @@
+//select from multiply tables
+SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo
+FROM Persons, Orders
+WHERE Persons.Id_P = Orders.Id_P 
+
+//inner join
+SELECT column_name(s)
+FROM table_name1
+INNER JOIN table_name2 
+ON table_name1.column_name=table_name2.column_name
+
+//left join
+SELECT column_name(s)
+FROM table_name1
+LEFT JOIN table_name2 
+ON table_name1.column_name=table_name2.column_name
+
+//right join
+SELECT column_name(s)
+FROM table_name1
+RIGHT JOIN table_name2 
+ON table_name1.column_name=table_name2.column_name
+
+//union 注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。
+SELECT column_name(s) FROM table_name1
+UNION
+SELECT column_name(s) FROM table_name2
+
+//union all
+SELECT column_name(s) FROM table_name1
+UNION ALL
+SELECT column_name(s) FROM table_name2
+
+//
+

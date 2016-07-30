@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE> Test </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="动态增加行">
+<META NAME="Description" CONTENT="http://qwzsky.cnblogs.com/">
+</HEAD>
+<style type="text/css">
+table{
+ border : 1px solid black ;
+}
+td{
+ width : 100px ;
+ border : 1px solid black ;
+}
+</style>
+
+<script language="javascript" type="text/javascript">
+var rowNum = 0;
+function insertRow()
+{
+var table1 = document.getElementById("tbl");
+var tr1 = document.createElement("tr");
+
+for (var j=0;j<3; j++)
+{
+var td1 = document.createElement("td");
+var tn = document.createTextNode(rowNum);
+td1.appendChild(tn);
+tr1.appendChild(td1);
+}
+
+var tdd = document.createElement("td");
+var deleteButton = document.createElement("button");
+deleteButton.title = rowNum;
+deleteButton.innerText = 'delete';
+/*deleteButton.onclick = function(event){
+	console.log(event.target.title);
+	
+}*/
+
+deleteButton.onclick = function(event){
+	var _parentTd = event.target.parentNode;
+	var _parentTh = event.target.parentNode.parentNode;
+	var _parentTb = event.target.parentNode.parentNode.parentNode;
+	if(_parentTb){
+		_parentTb.removeChild(_parentTh);  
+	}
+}
+
+tdd.appendChild(deleteButton);
+tr1.appendChild(tdd);
+
+rowNum = rowNum + 1;
+//alert(tr1.childNodes[0].innerText);
+table1.appendChild(tr1);
+//alert(table1.outerHTML);
+}
+</script>
+
+<BODY>
+<input id="Insert" type="button" value="Insert" onclick="insertRow();">
+<table border="1" id="tbl">
+   <tr>
+      <td>NO</td>
+      <td>UserID</td>
+      <td>Name</td>
+	  <td>Delete</td>
+   </tr>
+</table>
+</BODY>
+</HTML>
